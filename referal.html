@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Referral Template Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        nav {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 600px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 100px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .icon {
+            margin-right: 8px;
+            color: #007bff;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="#"><i class="fas fa-info-circle"></i> About</a>
+        <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+
+    <h1>LinkedIn Referral Template Generator</h1>
+    <div class="card">
+        <form id="referralForm">
+            <label><i class="fas fa-user icon"></i>Your Name: <input type="text" id="yourName" required></label>
+            <label><i class="fas fa-user-friends icon"></i>Recipient's Name: <input type="text" id="recipientName" required></label>
+            <label><i class="fas fa-building icon"></i>Company Name: <input type="text" id="companyName" required></label>
+            <label><i class="fas fa-briefcase icon"></i>Roles of Interest: <input type="text" id="roles" required></label>
+            <label>
+                <i class="fas fa-clock icon"></i>Internship/Full-Time:
+                <input type="checkbox" id="internship"> Internship
+                <input type="checkbox" id="fullTime"> Full-Time
+            </label>
+            <label><i class="fas fa-tools icon"></i>Key Skills/Experience: <textarea id="skills" required></textarea></label>
+            <label><i class="fas fa-graduation-cap icon"></i>Education: <textarea id="education"></textarea></label>
+            <label><i class="fas fa-briefcase icon"></i>Experience: <textarea id="experience"></textarea></label>
+            <label><i class="fas fa-certificate icon"></i>Certificates: <textarea id="certificates"></textarea></label>
+            <label><i class="fas fa-tools icon"></i>Tools: <textarea id="tools"></textarea></label>
+            
+            <label for="templateSelect"><i class="fas fa-file-alt icon"></i>Select Template:</label>
+            <select id="templateSelect">
+                <option value="template1">Recent Graduate</option>
+                <option value="template2">B.Tech Candidate</option>
+                <option value="template3">Experienced Candidate</option>
+            </select>
+            
+            <button type="button" onclick="generateTemplate()">Generate Template</button>
+        </form>
+    </div>
+
+    <h2>Generated Template:</h2>
+    <div class="card">
+        <pre id="output"></pre>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 LinkedIn Referral Template Generator. All rights reserved.</p>
+        <a href="#"><i class="fas fa-github"></i></a>
+        <a href="#"><i class="fas fa-linkedin"></i></a>
+        <a href="#"><i class="fas fa-twitter"></i></a>
+    </footer>
+
+    <script>
+        function generateTemplate() {
+            const yourName = document.getElementById('yourName').value;
+            const recipientName = document.getElementById('recipientName').value;
+            const companyName = document.getElementById('companyName').value;
+            const roles = document.getElementById('roles').value;
+            const internship = document.getElementById('internship').checked ? 'Internship' : '';
+            const fullTime = document.getElementById('fullTime').checked ? 'Full-Time' : '';
+            const skills = document.getElementById('skills').value;
+            const education = document.getElementById('education').value;
+            const experience = document.getElementById('experience').value;
+            const certificates = document.getElementById('certificates').value;
+            const tools = document.getElementById('tools').value;
+            const templateSelect = document.getElementById('templateSelect').value;
+
+            let output = '';
+
+            // Template for Recent Graduates
+            if (templateSelect === 'template1') {
+                output = `**Subject: Exploring Opportunities at ${companyName}**
+
+Dear ${recipientName},
+
+I hope this message finds you well. My name is ${yourName}, and I am a recent graduate with a degree in [Your Degree] from [Your University]. I am reaching out to explore potential ${internship} ${fullTime} opportunities at ${companyName}.
+
+With a solid foundation in ${skills}, I have successfully completed projects such as [mention one or two key projects relevant to the roles of interest].`;
+
+            // Template for B.Tech Candidates
+            } else if (templateSelect === 'template2') {
+                output = `**Subject: Request for Referral at ${companyName}**
+
+Hi ${recipientName},
+
+I trust this message finds you in great spirits. I’m ${yourName}, currently pursuing a B.Tech in [Your Major] from [Your University]. I am very passionate about [specific field or technology] and am eager to explore ${internship} ${fullTime} positions at ${companyName}.
+
+I have honed my skills in ${skills}, and I believe my experience with [mention any relevant project or tool] would be an asset to your team.`;
+
+            // Template for Experienced Candidates
+            } else if (templateSelect === 'template3') {
+                output = `**Subject: Inquiry About Opportunities at ${companyName}**
+
+Hello ${recipientName},
+
+I hope you’re doing well. My name is ${yourName}, and I’m reaching out to inquire about potential ${internship} ${fullTime} roles at ${companyName}. I have [X years] of experience in [Your Field] and a strong interest in [specific field or technology].
+
+I have successfully worked on [mention relevant experience], and my skills in ${skills} would enable me to contribute effectively to your team.`;
+
+            }
+
+            // Append additional information if available
+            if (education) {
+                output += `
+
+**Education:**
+${education}`;
+            }
+            if (experience) {
+                output += `
+
+**Experience:**
+${experience}`;
+            }
+            if (certificates) {
+                output += `
+
+**Certificates:**
+${certificates}`;
+            }
+            if (tools) {
+                output += `
+
+**Tools:**
+${tools}`;
+            }
+
+            output += `
+
+I admire [something specific about the company or the recipient, e.g., the innovative projects at ${companyName} or its commitment to technology advancement], and I believe I could bring valuable insights to your team.
+
+If you are aware of any openings or could refer me within ${companyName}, I would greatly appreciate your support. Thank you for considering my request, and I look forward to the possibility of contributing to your esteemed organization.
+
+Warm regards,  
+${yourName}  
+[Your LinkedIn Profile URL]  
+[Your Email]  
+[Your Phone Number]`;
+
+            document.getElementById('output').textContent = output;
+        }
+    </script>
+</body>
+</html>
